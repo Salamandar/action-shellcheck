@@ -125,7 +125,7 @@ runs:
         fi
 
         for name in ${INPUT_IGNORE_NAMES}; do
-          excludes+=("! -name $name")
+          excludes+=("! -path $name")
         done
         echo "excludes=${excludes[@]}" >> $GITHUB_OUTPUT
 
@@ -139,7 +139,7 @@ runs:
       run: |
         declare -a files
         for file in ${INPUT_ADDITIONAL_FILES}; do
-          files+=("-o -name *$file")
+          files+=("-o -path *$file")
         done
         echo "files=${files[@]}" >> $GITHUB_OUTPUT
 
